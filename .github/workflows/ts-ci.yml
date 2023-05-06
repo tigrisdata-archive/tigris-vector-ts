@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm run clean
       - run: |
           npm install
           npm run lint
+          npm run clean
           npm run build
       - run: npm run test -- --coverage
       - name: Upload coverage to Codecov
