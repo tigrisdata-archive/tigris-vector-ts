@@ -1,124 +1,60 @@
-# Vector Search API Example
+# Tigris Vector Database Client Library for TypeScript
 
-This example shows how to implement a **Vector Search API with TypeScript** using
-[OpenAI](https://platform.openai.com/),
-[Express](https://expressjs.com/) and
-[Tigris TypeScript SDK](https://docs.tigrisdata.com/typescript/).
+[![build](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yml/badge.svg?branch=main)](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yml)
+[![codecov](https://codecov.io/gh/tigrisdata/tigris-vector-ts/branch/main/graph/badge.svg)](https://codecov.io/gh/tigrisdata/tigris-vector-ts)
+[![GitHub](https://img.shields.io/github/license/tigrisdata/tigris-vector-ts)](https://github.com/tigrisdata/tigris-vector-ts/blob/main/LICENSE)
+[![Discord](https://img.shields.io/discord/1033842669983633488?color=%23596fff&label=Discord&logo=discord&logoColor=%23ffffff)](https://tigris.dev/discord)
+[![Twitter Follow](https://img.shields.io/twitter/follow/tigrisdata?style=social)](https://twitter.com/tigrisdata)
 
-## Getting started
+# Documentation
 
-### 1. Download the example
+- [Vector Search Overview](https://www.tigrisdata.com/docs/concepts/vector-search/)
+- [Getting Started](https://www.tigrisdata.com/docs/quickstarts/quickstart-vector-search/)
 
-Download this example:
+# Building
 
 ```
-npx create-tigris-app@latest --example vector-search-openai
+# clean the dev env
+npm run clean
+
+# build
+npm run build
+
+# test
+npm run test
+
+# lint
+npm run lint
 ```
 
-The above command will also take care of installing the dependencies.
+# Code Quality
+
+## 1. Linting
+
+The coding style rules are defined by [Prettier](https://prettier.io/) and
+enforced by [Eslint](https://eslint.org)
+
+## 2. Git Hooks
+
+We use [pre-commit](https://pre-commit.com/index.html) to automatically
+setup and run git hooks.
+
+Install the pre-commit hooks as follows:
 
 ```shell
-✔ What is your project named? … /Users/ovaistariq/projects/vectorsearchapp
-✔ What is the clientId? … my_id
-✔ What is the clientSecret? … *********
-Creating a new app in /Users/ovaistariq/projects/vectorsearchapp.
-
-Downloading files for example vector-search-openai. This might take a moment.
-
-Initializing project with template: vector-search-openai
-
-Using npm.
-
-Installing dependencies:
-- @tigrisdata/core: 1.0.0-beta.43
-- express: 4.18.2
-- openai: 3.2.1
-
-
-added 245 packages, and audited 246 packages in 5s
-
-35 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-Initialized a git repository.
-
-Success! Created vectorsearchapp at /Users/ovaistariq/projects/vectorsearchapp
-
-Inside that directory, you can run several commands:
-
-  npm run dev
-    Starts the development server.
-
-  npm run build
-    Builds the app for production.
-
-  npm start
-    Runs the built app in production mode.
-
-We suggest that you begin by typing:
-
-  cd /Users/ovaistariq/projects/vectorsearchapp
-  npm run dev
+pre-commit install
 ```
 
-### 2. Setup OpenAI API credentials
+On every `git commit` we check the code quality using prettier and eslint.
 
-This project uses OpenAPI APIs to generate embeddings for the documents
-that are stored in the search index.
+# License
 
-The OpenAI API uses API keys for authentication. You will need the
-OpenAI-Organization and API key to be able to authenticate with.
-Visit your [API Keys](https://platform.openai.com/account/api-keys) page to
-retrieve the API key you'll use in your requests.
+This software is licensed under the [Apache 2.0](LICENSE).
 
-Then update the `.env` file and add the following:
+# Contributors
 
-```env
-OPENAI_ORG=your_org_here
-OPENAI_API_KEY=your_api_key_here
-```
+Thanks to all the people who contributed!
 
-### 2. Seed the search index
-
-We will be using 1000 records from the
-[Amazon Fine Food Reviews](https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews?resource=download)
-dataset.
-
-```shell
-npm run seed
-```
-
-This will read the data from [scripts/data/reviews.csv](scripts/data/reviews.csv),
-generate the embeddings using OpenAI API and store the data in Tigris search index.
-
-### 3. Start the REST Search API server
-
-```
-npm run dev
-```
-
-The server is now running on `http://localhost:3000`. You can now run the API
-requests, e.g.
-[http://localhost:3000/search](http://localhost:3000/search).
-
-## Using the REST API
-
-You can access the REST API of the server using the following endpoints:
-
-### `GET`
-
-- `/search?searchString={searchString}&page={page}&size={size}&orderBy={orderBy}`: Fetch all movies
-  - Query Parameters
-    - `searchString` (required): This specifies the search string that is used
-      to fetch the relevant documents from the search index
-    - `size` (optional): This specifies how many movies should be returned in
-      the result
-    - `page` (optional): This specifies the page number to be returned when
-      there are more than one page of search results
-
-## Next steps
-
-- Check out the [Tigris docs](https://docs.tigrisdata.com/)
-- Join our [Discord server](http://discord.tigrisdata.com/) and share your
-  feedback
+<a href="https://github.com/tigrisdata/tigris-vector-ts/graphs/contributors">
+	<img src="https://contrib.rocks/image?repo=tigrisdata/tigris-vector-ts" />
+</a>
