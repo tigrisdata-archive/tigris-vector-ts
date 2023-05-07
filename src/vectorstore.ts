@@ -115,7 +115,7 @@ export class VectorDocumentStore {
   }: {
     query: number[];
     k: number;
-    filter?: Filter<Pick<Document, "metadata">>;
+    filter?: object;
   }): Promise<Document[]> {
     await this.enusreIndex();
 
@@ -148,7 +148,7 @@ export class VectorDocumentStore {
   }: {
     query: number[];
     k: number;
-    filter?: Filter<Pick<Document, "metadata">>;
+    filter?: object;
   }): Promise<[Document, number][]> {
     await this.enusreIndex();
 
