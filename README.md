@@ -1,6 +1,6 @@
 # Tigris Vector Database Client Library for TypeScript
 
-[![build](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yml/badge.svg?branch=main)](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yml)
+[![build](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yaml/badge.svg?branch=main)](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yaml)
 [![codecov](https://codecov.io/gh/tigrisdata/tigris-vector-ts/branch/main/graph/badge.svg)](https://codecov.io/gh/tigrisdata/tigris-vector-ts)
 [![GitHub](https://img.shields.io/github/license/tigrisdata/tigris-vector-ts)](https://github.com/tigrisdata/tigris-vector-ts/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1033842669983633488?color=%23596fff&label=Discord&logo=discord&logoColor=%23ffffff)](https://tigris.dev/discord)
