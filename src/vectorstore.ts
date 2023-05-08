@@ -1,4 +1,5 @@
 import {
+  DeleteIndexResponse,
   DocStatus,
   Filter,
   Search,
@@ -70,6 +71,14 @@ export class VectorDocumentStore {
   }
 
   /**
+   * Deletes the index.
+   * @returns A promise that resolves when the index has been deleted
+   */
+  public async deleteIndex(): Promise<DeleteIndexResponse> {
+    return this._searchClient.deleteIndex(this._indexName);
+  }
+
+  /**
    * Add documents to the index.
    * @param ids The IDs of the documents to add
    * @param embeddings The embeddings of the documents to add
@@ -99,6 +108,48 @@ export class VectorDocumentStore {
     );
 
     return this._index.createOrReplaceMany(documentsToAdd);
+  }
+
+  /**
+   * Delete documents from the index.
+   * @param ids The IDs of the documents to delete
+   * @returns A promise that resolves when the documents have been deleted
+   * successfully
+   */
+  public async deleteDocuments(ids: string[]): Promise<DocStatus[]> {
+    await this.enusreIndex();
+
+    return this._index.deleteMany(ids);
+  }
+
+  /**
+   * Delete documents from the index by filter.
+   * @param filter The filter to apply to the documents to delete
+   * @returns A promise that resolves when the documents have been deleted
+   * successfully
+   */
+  public async deleteDocumentsByFilter(filter: object): Promise<number> {
+    await this.enusreIndex();
+
+    return this._index.deleteByQuery(filter);
+  }
+
+  /**
+   * Get documents from the index by ID.
+   * @param ids The IDs of the documents to get
+   * @returns A promise that resolves to an array of documents fetched
+   * successfully
+   */
+  public async getDocuments(ids: string[]): Promise<Document[]> {
+    await this.enusreIndex();
+
+    const response = await this._index.getMany(ids);
+    return response.map((document) => {
+      return {
+        content: document.document.content,
+        metadata: document.document.metadata,
+      };
+    });
   }
 
   /**
