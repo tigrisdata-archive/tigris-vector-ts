@@ -33,7 +33,7 @@ import { VectorDocumentStore } from "@tigrisdata/vector";
 
 const vectorDocStore = new VectorDocumentStore({
   connection: {
-    serverUrl: "api-preview.tigrisdata.io",
+    serverUrl: "api.preview.tigrisdata.cloud",
     projectName: "vectordemo",
     clientId: "clientId_here",
     clientSecret: "clientSecret_here",
