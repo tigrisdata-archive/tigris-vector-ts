@@ -3,6 +3,19 @@ const mockGetSearch = jest.fn().mockImplementation(() => {
     createOrUpdateIndex: jest.fn().mockImplementation(() => {
       return {
         createOrReplaceMany: jest.fn(),
+        deleteMany: jest.fn(),
+        deleteByQuery: jest.fn(),
+        getMany: jest.fn().mockImplementation(() => {
+          return [
+            {
+              document: {
+                content: "testContent",
+                metadata: { test: "test" },
+              },
+              meta: {},
+            },
+          ];
+        }),
         search: jest.fn().mockImplementation(() => {
           return {
             hits: [
@@ -22,6 +35,7 @@ const mockGetSearch = jest.fn().mockImplementation(() => {
         }),
       };
     }),
+    deleteIndex: jest.fn(),
   };
 });
 
@@ -96,6 +110,15 @@ it("should create an index with the correct schema", async () => {
   );
 });
 
+it("should delete an index", async () => {
+  const vectorStore = new VectorDocumentStore(config);
+  const searchClient = vectorStore.searchClient;
+
+  await vectorStore.deleteIndex();
+
+  expect(searchClient.deleteIndex).toHaveBeenCalledWith(config.indexName);
+});
+
 it("should create documents with the correct schema", async () => {
   const vectorStore = new VectorDocumentStore(config);
 
@@ -121,6 +144,24 @@ it("should create documents with the correct schema", async () => {
   const index = vectorStore.index;
 
   expect(index.createOrReplaceMany).toHaveBeenCalledWith(documents);
+});
+
+it("should delete documents with the correct schema", async () => {
+  const vectorStore = new VectorDocumentStore(config);
+
+  await vectorStore.deleteDocuments(["testId"]);
+  const index = vectorStore.index;
+
+  expect(index.deleteMany).toHaveBeenCalledWith(["testId"]);
+});
+
+it("should get documents with the correct schema", async () => {
+  const vectorStore = new VectorDocumentStore(config);
+
+  await vectorStore.getDocuments(["testId"]);
+  const index = vectorStore.index;
+
+  expect(index.getMany).toHaveBeenCalledWith(["testId"]);
 });
 
 it("should search for documents with the correct schema", async () => {
