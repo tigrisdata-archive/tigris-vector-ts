@@ -1,4 +1,5 @@
 import {
+  DocStatus,
   Filter,
   Search,
   SearchIndex,
@@ -83,7 +84,7 @@ export class VectorDocumentStore {
     ids: string[];
     embeddings: number[][];
     documents: Document[];
-  }) {
+  }): Promise<DocStatus[]> {
     await this.enusreIndex();
 
     const documentsToAdd: DocumentSchema[] = documents.map(
@@ -97,7 +98,7 @@ export class VectorDocumentStore {
       }
     );
 
-    await this._index.createOrReplaceMany(documentsToAdd);
+    return this._index.createOrReplaceMany(documentsToAdd);
   }
 
   /**
