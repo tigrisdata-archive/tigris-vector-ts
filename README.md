@@ -128,6 +128,8 @@ Tigris provides the following features:
 - Fully managed: Tigris is a fully managed cloud-native database. You
   can get started with Tigris in minutes and scale as needed with ease.
 
+Check out the docs at [https://www.tigrisdata.com/docs/concepts/vector-search/](https://www.tigrisdata.com/docs/concepts/vector-search/).
+
 # Contributing
 
 ## Building
