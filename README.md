@@ -1,3 +1,8 @@
+> ⚠️ **This repository is archived.**
+>
+> Tigris has pivoted from this database project to a new, globally distributed S3-compatible object storage service.
+> Learn more about the new product here: https://www.tigrisdata.com/
+
 # Tigris Vector Database Client Library for TypeScript
 
 [![build](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yaml/badge.svg?branch=main)](https://github.com/tigrisdata/tigris-vector-ts/actions/workflows/ts-ci.yaml)
